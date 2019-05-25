@@ -86,7 +86,7 @@ export class HomePage implements OnInit{
   authenticateLogin(){
 
     if(!this.form.value.username || !this.form.value.password){
-      this.Loader.showAlert();
+      this.Loader.showAlert('Usuário ou senha invalidos!');
     }
     else{
       this.Loader.showLoader();
@@ -102,7 +102,7 @@ export class HomePage implements OnInit{
         this.router.navigateByUrl('dashboard');
       }).catch((fail)=>{
         this.Loader.dismissLoader();
-        this.Loader.showAlert();
+        this.Loader.showAlert('Usuário ou senha invalidos!');
       })
     }
 

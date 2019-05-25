@@ -9,7 +9,7 @@ import { LoaderService } from '../loader.service';
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
 })
-export class DashboardPage implements OnInit {
+export class DashboardPage{
 
   public username: string;
 
@@ -17,11 +17,12 @@ export class DashboardPage implements OnInit {
 
   ionViewWillEnter(){
     this.loaderService.showLoader();
+    setTimeout(()=>{
+      this.loaderService.dismissLoader();
+    },1000);
   }
 
-  ionViewDidEnter(){
-    this.loaderService.dismissLoader();
-  }
+
 
   logOut(){
     this.storage.remove('cdUser').then(()=>{
@@ -35,8 +36,10 @@ export class DashboardPage implements OnInit {
     });
   }
 
-  teste(){
-    alert('teste');
+  refresh(e){
+    setTimeout(()=>{
+      e.target.complete();
+    },1000);
   }
 
 }

@@ -25,10 +25,22 @@ export class LoaderService {
     this.loading.dismiss();
   }
 
-  public showAlert(){
+  public showAlert(messageText){
     this.alertController.create({
       header: 'Erro',
-      message: '<b>Login</b> ou <b>senha</b> incorretos!',
+      message: messageText,
+      buttons: ['OK'],
+      animated: true
+    }).then((alert)=>{
+      this.alert = alert;
+      this.alert.present();
+    })
+  }
+
+  public showAlertSucess(messageText){
+    this.alertController.create({
+      header: 'Sucesso',
+      message: messageText,
       buttons: ['OK'],
       animated: true
     }).then((alert)=>{
