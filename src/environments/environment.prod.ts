@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  API_ENDPOINT: 'http://ourfinancesapi.us-east-1.elasticbeanstalk.com'
 };

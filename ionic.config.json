@@ -1,5 +1,7 @@
 {
   "name": "ourFinances-mobile-app",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

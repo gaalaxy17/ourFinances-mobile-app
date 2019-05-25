@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dashboard</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="logOut()" color="danger" fill="outline">
+        Sair
+        <ion-icon slot="start" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>    
+</ion-header>
+<ion-content>
+    <ion-list class="item-menu-list">
+        <ion-item button>
+          <ion-icon slot="end" name="cash"></ion-icon>
+          Saque
+        </ion-item>
+        <ion-item button>
+          <ion-icon slot="end" name="logo-usd"></ion-icon>
+          Depósito
+        </ion-item>
+        <ion-item button>
+          <ion-icon slot="end" name="analytics"></ion-icon>
+          Consultar Extrato
+        </ion-item>
+        <ion-item button>
+          <ion-icon slot="end" name="list-box"></ion-icon>
+          Minha Conta
+        </ion-item>
+        <ion-item button>
+          <ion-icon slot="end" name="settings"></ion-icon>
+          Configurações do Aplicativo
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title style="font-size: 12px; text-align: center;">OurFinances - Powered by Igor Iwashita</ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -1,14 +1,33 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Login
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <div class="loader">
+    <img src="">
   </div>
+  <ion-card>
+    <ion-card-header>Seja bem vindo ao <strong>OurFinances!</strong></ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="form">
+        <ion-input type="text" formControlName="username" placeholder="Digite o seu nome de usuário"></ion-input>
+        <ion-input type="password" formControlName="password" placeholder="Digite a sua senha"></ion-input>
+        <br>
+        <ion-button (click)="authenticateLogin()" color="dark" type="submit" expand="full">Login</ion-button>
+        <ion-button color="danger" expand="full">Esqueci minha senha</ion-button>
+        <div class="hr"></div>
+        <ion-button [routerLink]="['/create-account']" expand="full">Não tenho uma conta</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <ion-title style="font-size: 12px; text-align: center;">OurFinances - Powered by Igor Iwashita</ion-title>
+    </ion-toolbar>
+  </ion-footer>
