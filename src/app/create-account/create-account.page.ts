@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { LoaderService } from '../loader.service';
 import { Router } from '@angular/router';
 
@@ -54,7 +54,6 @@ export class CreateAccountPage implements OnInit {
         fullName: this.form.value.fullName,
         type: this.form.value.type
       };
-  
       this.httpClient.post(environment.API_ENDPOINT + '/users/cadastrar',this.newUser,{}).subscribe((results)=>{
         console.log(results);
         this.loaderService.dismissLoader();
