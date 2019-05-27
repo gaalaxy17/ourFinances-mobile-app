@@ -18,7 +18,7 @@
         <ion-input type="password" formControlName="password" placeholder="Digite a sua senha"></ion-input>
         <br>
         <ion-button (click)="authenticateLogin()" color="dark" type="submit" expand="full">Login</ion-button>
-        <ion-button color="danger" expand="full">Esqueci minha senha</ion-button>
+        <ion-button [routerLink]="['/forgot-password']" routerLinkActive="router-link-active"  color="danger" expand="full">Esqueci minha senha</ion-button>
         <div class="hr"></div>
         <ion-button [routerLink]="['/create-account']" expand="full">Não tenho uma conta</ion-button>
       </form>

@@ -53,32 +53,20 @@ export class HomePage implements OnInit{
 
     return new Promise((resolve,reject)=>{
       const usernameFieldValue = this.form.value.username;
-      const password = this.form.value.password;
-      let passwordHash = null;
+      const passwordFieldValue = this.form.value.password;
 
+      const credentials = {
+        username: usernameFieldValue,
+        password: passwordFieldValue
+      };
 
-      this.httpClient.get('https://api.hashify.net/hash/md4/hex?value=' + password).subscribe((data)=>{
-
-      const field = 'Digest';
-      passwordHash = data[field];
-
-      }, (err) => {
-        console.log(err);
-      }, () => {
-
-        const credentials = {
-          username: usernameFieldValue,
-          password: passwordHash
-        };
-
-        this.httpClient.post(environment.API_ENDPOINT + '/users/login',credentials)
-        .subscribe((results)=>{
-          resolve(results);
-        },(err)=>{
-          reject(err);
-        });
-
+      this.httpClient.post(environment.API_ENDPOINT + '/users/login',credentials)
+      .subscribe((results)=>{
+        resolve(results);
+      },(err)=>{
+        reject(err);
       });
+
 
     });
   }
