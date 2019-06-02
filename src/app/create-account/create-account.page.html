@@ -30,6 +30,10 @@
                 <ion-label position="floating">Nome Completo:</ion-label>
                 <ion-input formControlName="fullName" type="text"></ion-input>
             </ion-item>
+            <ion-item (click)="getPicture()" button>
+              <ion-icon slot="end" name="camera"></ion-icon>
+              Foto
+            </ion-item>
             <ion-item>
                 <ion-label>Tipo:</ion-label>
                 <ion-select formControlName="type" interface="action-sheet" cancel-text="Voltar" placeholder="Selecione um tipo">

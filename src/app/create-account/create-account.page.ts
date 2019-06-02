@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { LoaderService } from '../loader.service';
 import { Router } from '@angular/router';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx'
 
 @Component({
   selector: 'app-create-account',
@@ -13,14 +14,15 @@ import { Router } from '@angular/router';
 export class CreateAccountPage implements OnInit {
 
   form: FormGroup;
-
+  photo: String;
   newUser: Object;
 
   constructor(
     public formBuilder: FormBuilder,
     public httpClient: HttpClient,
     public loaderService: LoaderService,
-    public router: Router
+    public router: Router,
+    public camera: Camera
   ) { }
 
   ngOnInit() {
@@ -53,7 +55,8 @@ export class CreateAccountPage implements OnInit {
       password: this.form.value.password,
       email: this.form.value.email,
       fullName: this.form.value.fullName,
-      type: this.form.value.type
+      type: this.form.value.type,
+      dsFoto: this.photo
     };
     this.httpClient.post(environment.API_ENDPOINT + '/users/cadastrar', this.newUser, {}).subscribe((results)=>{
       console.log(results);
@@ -65,8 +68,28 @@ export class CreateAccountPage implements OnInit {
       this.loaderService.dismissLoader();
       this.loaderService.showAlert(err.error);
     })
-
     
+  }
+
+  getPicture(){
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options)
+      .then((imageData)=>{
+        let base64Image = 'data:image/jpeg;base64,' + imageData;
+        this.photo = base64Image;
+        this.loaderService.showAlertSucess('Foto salva com sucesso!');
+      }, (err) =>{
+        console.log(err);
+      }).catch((fail)=>{
+        console.log(fail);
+      })
+
   }
 
   
